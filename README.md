@@ -1,4 +1,4 @@
-# VPC, EC2, IAMロール, セキュリティグループデプロイサンプル
+# スケーラブルハンズオン CDK実装サンプル
 
 [スケーラブルハンズオン](https://catalog.us-east-1.prod.workshops.aws/workshops/47782ec0-8e8c-41e8-b873-9da91e822b36/ja-JP)の手順の一部を実装するCDKコードで、以下の要素を含みます
 
