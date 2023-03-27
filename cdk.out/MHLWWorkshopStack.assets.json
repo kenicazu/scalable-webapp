@@ -1,0 +1,19 @@
+{
+  "version": "21.0.0",
+  "files": {
+    "e3e9f225870de71040ab01484616323c9f608b2208eb92ba54c32f59017ef6aa": {
+      "source": {
+        "path": "MHLWWorkshopStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "e3e9f225870de71040ab01484616323c9f608b2208eb92ba54c32f59017ef6aa.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

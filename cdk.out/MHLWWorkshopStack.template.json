@@ -1,0 +1,698 @@
+{
+ "Resources": {
+  "handsonvpc3EE72936": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "MHLWWorkshopStack/handson-vpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/Resource"
+   }
+  },
+  "handsonvpcPublicSubnet1Subnet8DB17087": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "handsonvpc3EE72936"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "MHLWWorkshopStack/handson-vpc/PublicSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PublicSubnet1/Subnet"
+   }
+  },
+  "handsonvpcPublicSubnet1RouteTable2940677F": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "handsonvpc3EE72936"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "MHLWWorkshopStack/handson-vpc/PublicSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PublicSubnet1/RouteTable"
+   }
+  },
+  "handsonvpcPublicSubnet1RouteTableAssociation8BEB3643": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "handsonvpcPublicSubnet1RouteTable2940677F"
+    },
+    "SubnetId": {
+     "Ref": "handsonvpcPublicSubnet1Subnet8DB17087"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PublicSubnet1/RouteTableAssociation"
+   }
+  },
+  "handsonvpcPublicSubnet1DefaultRouteF58484E6": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "handsonvpcPublicSubnet1RouteTable2940677F"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "handsonvpcIGWC12A71EE"
+    }
+   },
+   "DependsOn": [
+    "handsonvpcVPCGWCE0CA438"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PublicSubnet1/DefaultRoute"
+   }
+  },
+  "handsonvpcPublicSubnet2Subnet2A6DB659": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "handsonvpc3EE72936"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "MHLWWorkshopStack/handson-vpc/PublicSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PublicSubnet2/Subnet"
+   }
+  },
+  "handsonvpcPublicSubnet2RouteTableC438BDA6": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "handsonvpc3EE72936"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "MHLWWorkshopStack/handson-vpc/PublicSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PublicSubnet2/RouteTable"
+   }
+  },
+  "handsonvpcPublicSubnet2RouteTableAssociation24105149": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "handsonvpcPublicSubnet2RouteTableC438BDA6"
+    },
+    "SubnetId": {
+     "Ref": "handsonvpcPublicSubnet2Subnet2A6DB659"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PublicSubnet2/RouteTableAssociation"
+   }
+  },
+  "handsonvpcPublicSubnet2DefaultRoute4BA48965": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "handsonvpcPublicSubnet2RouteTableC438BDA6"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "handsonvpcIGWC12A71EE"
+    }
+   },
+   "DependsOn": [
+    "handsonvpcVPCGWCE0CA438"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PublicSubnet2/DefaultRoute"
+   }
+  },
+  "handsonvpcPrivateSubnet1SubnetE4C0C501": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "handsonvpc3EE72936"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.2.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "MHLWWorkshopStack/handson-vpc/PrivateSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PrivateSubnet1/Subnet"
+   }
+  },
+  "handsonvpcPrivateSubnet1RouteTable5FC2BDFD": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "handsonvpc3EE72936"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "MHLWWorkshopStack/handson-vpc/PrivateSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PrivateSubnet1/RouteTable"
+   }
+  },
+  "handsonvpcPrivateSubnet1RouteTableAssociationE302D1CE": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "handsonvpcPrivateSubnet1RouteTable5FC2BDFD"
+    },
+    "SubnetId": {
+     "Ref": "handsonvpcPrivateSubnet1SubnetE4C0C501"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PrivateSubnet1/RouteTableAssociation"
+   }
+  },
+  "handsonvpcPrivateSubnet2Subnet7B6A8107": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "handsonvpc3EE72936"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.3.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "MHLWWorkshopStack/handson-vpc/PrivateSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PrivateSubnet2/Subnet"
+   }
+  },
+  "handsonvpcPrivateSubnet2RouteTable05B67DB5": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "handsonvpc3EE72936"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "MHLWWorkshopStack/handson-vpc/PrivateSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PrivateSubnet2/RouteTable"
+   }
+  },
+  "handsonvpcPrivateSubnet2RouteTableAssociation86089135": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "handsonvpcPrivateSubnet2RouteTable05B67DB5"
+    },
+    "SubnetId": {
+     "Ref": "handsonvpcPrivateSubnet2Subnet7B6A8107"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/PrivateSubnet2/RouteTableAssociation"
+   }
+  },
+  "handsonvpcIGWC12A71EE": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "MHLWWorkshopStack/handson-vpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/IGW"
+   }
+  },
+  "handsonvpcVPCGWCE0CA438": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "VpcId": {
+     "Ref": "handsonvpc3EE72936"
+    },
+    "InternetGatewayId": {
+     "Ref": "handsonvpcIGWC12A71EE"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/handson-vpc/VPCGW"
+   }
+  },
+  "websecuritygroup4AA59732": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Allow SSH (TCP port 22) and HTTP (TCP port 80) in",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow SSH Access",
+      "FromPort": 22,
+      "IpProtocol": "tcp",
+      "ToPort": 22
+     },
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow HTTP Access",
+      "FromPort": 80,
+      "IpProtocol": "tcp",
+      "ToPort": 80
+     }
+    ],
+    "VpcId": {
+     "Ref": "handsonvpc3EE72936"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/web-security-group/Resource"
+   }
+  },
+  "accessssmrolehandson1093ED2D": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": {
+         "Fn::Join": [
+          "",
+          [
+           "ec2.",
+           {
+            "Ref": "AWS::URLSuffix"
+           }
+          ]
+         ]
+        }
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonSSMManagedInstanceCore"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/access_ssm_role_handson/Resource"
+   }
+  },
+  "webserver1InstanceProfile47170D00": {
+   "Type": "AWS::IAM::InstanceProfile",
+   "Properties": {
+    "Roles": [
+     {
+      "Ref": "accessssmrolehandson1093ED2D"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/webserver#1/InstanceProfile"
+   }
+  },
+  "webserver17A7AB3B3": {
+   "Type": "AWS::EC2::Instance",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "IamInstanceProfile": {
+     "Ref": "webserver1InstanceProfile47170D00"
+    },
+    "ImageId": {
+     "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+    },
+    "InstanceType": "t2.micro",
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "websecuritygroup4AA59732",
+       "GroupId"
+      ]
+     }
+    ],
+    "SubnetId": {
+     "Ref": "handsonvpcPublicSubnet1Subnet8DB17087"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "MHLWWorkshopStack/webserver#1"
+     }
+    ],
+    "UserData": {
+     "Fn::Base64": "#!/bin/bash\n#!/bin/bash\n\nyum -y update\nyum -y install php httpd mysql\n\nPHP_VERSION=`php -v | head -n 1 | awk '{print $2}' | awk -F \".\" '{print $1}'`\nwhile [  ${PHP_VERSION} -ne 7 ]\ndo\namazon-linux-extras install php7.4 -y\nPHP_VERSION=`php -v | head -n 1 | awk '{print $2}' | awk -F \".\" '{print $1}'`\ndone\n\nyum -y install php-mbstring php-xml\n\nwget http://ja.wordpress.org/latest-ja.tar.gz -P /tmp/\ntar zxvf /tmp/latest-ja.tar.gz -C /tmp\ncp -r /tmp/wordpress/* /var/www/html/\nchown apache:apache -R /var/www/html\n\nsystemctl enable httpd.service\nsystemctl start httpd.service\n"
+    }
+   },
+   "DependsOn": [
+    "accessssmrolehandson1093ED2D"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/webserver#1/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WPTW/CMAyGfwv3NFsRm7Qj6gFxi9qJ6+SmRjO0DkocEKr63xcIrNvJrx9/vV7q1Zt+XcAlFLY7Fj21emwE7FEl9DWiXepxd7Kq2vPOVMrEtifbxJZRbmxWtYuCn9D2OPOZrUNwlkDI8W+zMp7OIDjv2LKgT3qT6AWuj6OPbC3J1veALKpBGz3JdeNdPN3P/QNbDgJsMa/MelIEgx5rl/0947NsvNtTj9Okagwu+jxswMOAydN95E+hctzR7ZlJsetQH8LLuXzX5YcuF4dAVPjIQgPqOscfFbYx7GYBAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "MHLWWorkshopStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Parameters": {
+  "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": {
+   "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+   "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-2"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,190 @@
+{
+  "version": "21.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "MHLWWorkshopStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "MHLWWorkshopStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "MHLWWorkshopStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "MHLWWorkshopStack.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e3e9f225870de71040ab01484616323c9f608b2208eb92ba54c32f59017ef6aa.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "MHLWWorkshopStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "MHLWWorkshopStack.assets"
+      ],
+      "metadata": {
+        "/MHLWWorkshopStack/handson-vpc/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpc3EE72936"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PublicSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPublicSubnet1Subnet8DB17087"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PublicSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPublicSubnet1RouteTable2940677F"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PublicSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPublicSubnet1RouteTableAssociation8BEB3643"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PublicSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPublicSubnet1DefaultRouteF58484E6"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PublicSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPublicSubnet2Subnet2A6DB659"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PublicSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPublicSubnet2RouteTableC438BDA6"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PublicSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPublicSubnet2RouteTableAssociation24105149"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PublicSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPublicSubnet2DefaultRoute4BA48965"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PrivateSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPrivateSubnet1SubnetE4C0C501"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PrivateSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPrivateSubnet1RouteTable5FC2BDFD"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PrivateSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPrivateSubnet1RouteTableAssociationE302D1CE"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PrivateSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPrivateSubnet2Subnet7B6A8107"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PrivateSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPrivateSubnet2RouteTable05B67DB5"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/PrivateSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcPrivateSubnet2RouteTableAssociation86089135"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcIGWC12A71EE"
+          }
+        ],
+        "/MHLWWorkshopStack/handson-vpc/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonvpcVPCGWCE0CA438"
+          }
+        ],
+        "/MHLWWorkshopStack/web-security-group/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "websecuritygroup4AA59732"
+          }
+        ],
+        "/MHLWWorkshopStack/access_ssm_role_handson/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "accessssmrolehandson1093ED2D"
+          }
+        ],
+        "/MHLWWorkshopStack/webserver#1/InstanceProfile": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "webserver1InstanceProfile47170D00"
+          }
+        ],
+        "/MHLWWorkshopStack/webserver#1/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "webserver17A7AB3B3"
+          }
+        ],
+        "/MHLWWorkshopStack/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+          }
+        ],
+        "/MHLWWorkshopStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/MHLWWorkshopStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ]
+      },
+      "displayName": "MHLWWorkshopStack"
+    }
+  }
+}
