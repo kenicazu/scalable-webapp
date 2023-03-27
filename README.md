@@ -19,7 +19,7 @@
 ├── cdk.json                        # CDKの設定ファイル
 ├── jest.config.js                  # JavaScriptのフレームワークJestの設定ファイル
 ├── lib                             # CDK(Stack)の実装
-│   ├── dummy-stack.ts              # サンプルのWordPressサイトとEFSをデプロイするStackの実装
+│   ├── *****-stack.ts              # VPC、EC2（ユーザデータ含む）、IAM、Security GroupをデプロイするためのStack
 ├── package-lock.json               # ライブラリ依存関係の定義ファイル
 ├── package.json                    # ライブラリ依存関係の定義ファイル
 ├── test                            # CDKのテストコード(未使用)
