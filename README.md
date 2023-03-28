@@ -68,4 +68,4 @@ cdk synth
 ```
 
 一連プロセスは5分ほどで終了します。  
-この後の手順は[スケーラブルハンズオン](https://catalog.us-east-1.prod.workshops.aws/workshops/47782ec0-8e8c-41e8-b873-9da91e822b36/ja-JP)をご確認ください
+この後の手順は[スケーラブルハンズオンのWordPressのインストール確認](https://catalog.us-east-1.prod.workshops.aws/workshops/47782ec0-8e8c-41e8-b873-9da91e822b36/ja-JP/hands-on/phase2/phase2-3)から進めてください
