@@ -5,6 +5,8 @@
 - ハンズオン用のVPC、サブネットのデプロイ
 - WordPressを実行するためのEC2のデプロイ（ユーザデータ、IAMロールの設定含む）
 
+[Amazon EC2 の作成](https://catalog.us-east-1.prod.workshops.aws/workshops/47782ec0-8e8c-41e8-b873-9da91e822b36/ja-JP/hands-on/phase2/phase2-2)までをCDKで実装します
+
 
 ![全体のアーキテクチャ図](./imgs/architecture.png)
 
