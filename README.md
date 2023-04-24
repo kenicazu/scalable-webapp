@@ -26,7 +26,8 @@ TypeScriptやCDKについて学びたい方は[こちらのCDKワークショッ
 ├── cdk.json                        # CDKの設定ファイル
 ├── jest.config.js                  # JavaScriptのフレームワークJestの設定ファイル
 ├── lib                             # CDK(Stack)の実装
-│   ├── scalable-stack.ts              # VPC、EC2（ユーザデータ含む）、IAM、Security GroupをデプロイするためのStack
+│   ├── scalable-stack.ts           # VPC、EC2（ユーザデータ含む）、IAM、Security GroupをデプロイするためのStack
+│   └── user-data.sh                # EC2のセットアップに使用するスクリプト
 ├── package-lock.json               # ライブラリ依存関係の定義ファイル
 ├── package.json                    # ライブラリ依存関係の定義ファイル
 ├── test                            # CDKのテストコード(未使用)
