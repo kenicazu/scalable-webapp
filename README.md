@@ -7,11 +7,13 @@
 
 （※スケーラブルハンズオンの手順における[2.b.Amazon EC2 の作成](https://catalog.us-east-1.prod.workshops.aws/workshops/47782ec0-8e8c-41e8-b873-9da91e822b36/ja-JP/hands-on/phase2/phase2-2)までをCDKで実装します）
 
+TypeScriptやCDKについて学びたい方は[こちらのCDKワークショップ](https://catalog.workshops.aws/typescript-and-cdk-for-beginner/ja-JP)をご覧いただけると幸いです。  
+実際にワークショップをしていただいてもいいですし、記載されている内容を机上で学習していただく使い方もできます。
+
 
 ![全体のアーキテクチャ図](./imgs/architecture.png)
 
-本サンプルコードはTypeScriptで実装しております。TypeScriptやCDKについては[こちらのCDKワークショップ](https://catalog.workshops.aws/typescript-and-cdk-for-beginner/ja-JP)をご覧いただけると幸いです。  
-実際にワークショップをしていただいてもいいですし、記載されている内容を机上で学習していただく使い方もできます。
+
 
 ## ディレクトリ構成
 
