@@ -10,6 +10,9 @@
 
 ![全体のアーキテクチャ図](./imgs/architecture.png)
 
+本サンプルコードはTypeScriptで実装しております。TypeScriptやCDKについては[こちらのCDKワークショップ](https://catalog.workshops.aws/typescript-and-cdk-for-beginner/ja-JP)をご覧いただけると幸いです。  
+実際にワークショップをしていただいてもいいですし、記載されている内容を机上で学習していただく使い方もできます。
+
 ## ディレクトリ構成
 
 以下は重要なファイル·ディレクトリのみ記載しています。
@@ -21,7 +24,7 @@
 ├── cdk.json                        # CDKの設定ファイル
 ├── jest.config.js                  # JavaScriptのフレームワークJestの設定ファイル
 ├── lib                             # CDK(Stack)の実装
-│   ├── *****-stack.ts              # VPC、EC2（ユーザデータ含む）、IAM、Security GroupをデプロイするためのStack
+│   ├── scalable-stack.ts              # VPC、EC2（ユーザデータ含む）、IAM、Security GroupをデプロイするためのStack
 ├── package-lock.json               # ライブラリ依存関係の定義ファイル
 ├── package.json                    # ライブラリ依存関係の定義ファイル
 ├── test                            # CDKのテストコード(未使用)

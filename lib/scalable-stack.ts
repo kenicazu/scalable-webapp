@@ -1,18 +1,13 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import * as ec2 from "aws-cdk-lib/aws-ec2";
-import * as rds from "aws-cdk-lib/aws-rds";
-import * as aws_ecs from "aws-cdk-lib/aws-ecs";
-import * as elbv2 from "aws-cdk-lib/aws-elasticloadbalancingv2";
 import * as iam from "aws-cdk-lib/aws-iam";
-import * as efs from "aws-cdk-lib/aws-efs";
-import { CfnOutput, Duration } from "aws-cdk-lib";
-import {readFileSync} from 'fs';
+import { readFileSync } from 'fs';
 
-export class MHLWWorkshopStack extends cdk.Stack {
+export class ScalableStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-    
+
     // リソースをデプロイするためのVPCの定義 
     const vpc = new ec2.Vpc(this, "handson-vpc", {
       cidr: "10.0.0.0/16",
@@ -30,7 +25,7 @@ export class MHLWWorkshopStack extends cdk.Stack {
         },
       ],
     });
-    
+
     // Security group for the EC2 instance
     const securityGroup = new ec2.SecurityGroup(this, "web-security-group", {
       vpc,
@@ -44,24 +39,24 @@ export class MHLWWorkshopStack extends cdk.Stack {
       ec2.Port.tcp(22),
       "Allow SSH Access"
     );
-    
+
     // Allow HTTP access on port tcp/80
     securityGroup.addIngressRule(
       ec2.Peer.anyIpv4(),
       ec2.Port.tcp(80),
       "Allow HTTP Access"
     );
-    
+
     // EC2用のロール作成
     const ec2role = new iam.Role(this, "access_ssm_role_handson", {
       assumedBy: new iam.ServicePrincipal("ec2.amazonaws.com"),
     });
-    
+
     //Session Manager用のマネージドポリシーの定義
     ec2role.addManagedPolicy(
       iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonSSMManagedInstanceCore")
     );
-    
+
     // Look up the AMI Id for the Amazon Linux 2 Image with CPU Type X86_64
     const ami = new ec2.AmazonLinuxImage({
       generation: ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
@@ -79,8 +74,8 @@ export class MHLWWorkshopStack extends cdk.Stack {
       machineImage: ami,
       securityGroup: securityGroup,
       role: ec2role,
-    });  
-    
+    });
+
     // Add user data
     const userDataScript = readFileSync('./lib/user-data.sh', 'utf8');
     ec2Instance.addUserData(userDataScript);
